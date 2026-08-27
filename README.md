@@ -1,75 +1,147 @@
 # Enterprise Operating System
 
-> **企业经营 × 组织 × 人才 × 机制 Agent Skill**  
-> **Bilingual / 中英双语**
+> **An AI-native reasoning and execution system for how companies work.**  
+> **一个让 Agent 理解、诊断并重构企业经营方式的 AI 原生操作系统。**
 
-## What is this? / 这是什么？
+[![Agent Skill](https://img.shields.io/badge/Agent-Skill-0f172a)](https://github.com/jupiterx0910/enterprise-operating-system/tree/main/skills/enterprise-operating-system)
+[![Bilingual](https://img.shields.io/badge/Language-中文%20%2B%20English-blue)](https://github.com/jupiterx0910/enterprise-operating-system)
+[![Evaluation](https://img.shields.io/badge/Evals-Behavioral%20Tests-purple)](https://github.com/jupiterx0910/enterprise-operating-system/tree/main/evals)
 
-Enterprise Operating System is an AI-native operating protocol connecting **strategy, organization, roles, people, mechanisms, execution, performance, and learning**.
+## Why this exists / 为什么做它
 
-Enterprise Operating System 是一套 AI 原生企业经营操作协议，用于连接**战略、组织、岗位、人才、机制、执行、绩效与学习**。
+Most management frameworks describe **what good management looks like**. This project is designed to make an Agent **actually reason and operate** through a business problem.
 
-It is not a traditional HR knowledge base. It makes an Agent operate through **discover → diagnose → design → decide → execute → measure → review → learn**.
+大多数管理方法论告诉人“好的管理应该是什么样”。这个项目要解决的是：让 Agent **真正按照一套可验证的经营逻辑去分析、决策、执行和复盘**。
 
-它不是传统 HR 知识库，而是让 Agent 按照**发现 → 诊断 → 设计 → 决策 → 执行 → 衡量 → 复盘 → 学习**运行。
+It is not a generic HR chatbot and not a collection of management essays.
 
-## Core Model / 核心模型
+它不是通用 HR 聊天机器人，也不是管理学文章合集。
+
+## The operating loop / 核心闭环
+
+```text
+DISCOVER → DIAGNOSE → DESIGN → DECIDE
+    ↑                              ↓
+  LEARN ← REVIEW ← MEASURE ← EXECUTE
+```
+
+**Evidence → Diagnosis → Decision → Action → Measurement → Learning**  
+**证据 → 诊断 → 决策 → 行动 → 衡量 → 学习**
+
+## Core model / 核心模型
 
 > **Business outcome = Strategy × Organization × People × Mechanism × Execution**  
 > **经营结果 = 战略 × 组织 × 人才 × 机制 × 执行**
 
-The multiplication sign is intentional: a serious failure in one dimension can dominate the outcome.
-
+The multiplication sign is intentional: a severe failure in one dimension can dominate the outcome.  
 乘号是有意的：任何一个关键维度的严重失效，都可能主导最终结果。
 
-## Agent Loop / Agent 主循环
+## 30-second demo / 30秒看懂
+
+**User / 用户：**
+
+> “Sales missed target by 30%. We should replace the VP. Diagnose it.”
+>
+> “销售目标差了 30%，应该换销售 VP。帮我诊断。”
+
+**Agent should / Agent 应该：**
 
 ```text
-DISCOVER → DIAGNOSE → DESIGN → DECIDE
-     ↑                         ↓
-   LEARN ← REVIEW ← MEASURE ← EXECUTE
+1. Verify the gap / 验证目标偏差
+2. Separate symptom from cause / 区分症状与根因
+3. Test Strategy / Organization / Mechanism / People / Execution
+4. Identify evidence and uncertainty / 标记证据与不确定性
+5. Decide: CONTINUE / ADJUST / RESTRUCTURE / REPLACE / STOP
+6. Assign owner + authority + resources + deadline + metric
+7. Set review and reversal conditions
 ```
 
-## Design Principles / 设计原则
+It must **not** jump from “missed target” to “replace the person” without evidence.  
+不能因为“目标没完成”就直接跳到“换人”。
 
-- **No evidence → no strong claim. / 没有证据，不做强结论。**
-- **Symptom ≠ root cause. / 症状不等于根因。**
-- **Business problem ≠ people problem. / 业务问题不等于人的问题。**
-- Diagnose systems and mechanisms before blaming individuals. / 先查系统与机制，再归因个人。
-- Responsibility must match authority and resources. / 责任必须与权力、资源匹配。
-- AI transformation starts with work and workflow redesign, not job-cutting. / AI 转型首先重构工作与工作流，而不是先讨论裁掉哪些岗位。
+## AI-native organization / AI 原生组织
 
-## Repository / 仓库结构
+Do not start with:
 
-- [`SKILL.md`](./SKILL.md) — Agent execution protocol / Agent 执行协议
-- [`docs/`](./docs/) — operating model and architecture / 方法论与架构
-- [`references/`](./references/) — domain knowledge / 企业经营知识模块
-- [`engines/`](./engines/) — diagnosis and decision engines / 诊断与决策引擎
-- [`templates/`](./templates/) — reusable operating templates / 可复用工作模板
-- [`examples/`](./examples/) — executable examples / 典型案例
-- [`tests/`](./tests/) — behavioral tests / 行为测试
+> **“Which jobs will AI replace?” / “AI 会替代哪些岗位？”**
 
-## Typical Use Cases / 典型场景
+Start with:
 
-- Diagnose missed business targets / 诊断经营目标未达成
-- Redesign an organization / 组织设计与重构
-- Map strategy to roles and talent / 战略到岗位与人才映射
-- Design DRI/RACI and decision rights / DRI、RACI 与决策权设计
-- Run talent review and succession planning / 人才盘点与继任
-- Redesign performance and incentives / 绩效与激励重构
-- Run MBR/QBR / 经营复盘
-- Redesign work for Human + AI + Agent / 人-AI-Agent 工作重构
+```text
+WORK
+ ↓
+TASKS
+ ↓
+DECISIONS
+ ↓
+ACCOUNTABILITY
+ ↓
+HUMAN | AI | AGENT | HUMAN+AI | HUMAN+AGENT
+ ↓
+NEW WORKFLOW / ROLE / AUTHORITY / METRICS
+```
 
-## The Key Difference / 核心差异
+The unit of redesign is **work**, not simply headcount.  
+重构的基本单位是**工作**，而不是简单的人头。
 
-Traditional management asks: “Who is responsible?” / 传统管理常问：“谁负责？”
+## What is inside / 项目内容
 
-This Skill additionally asks: “Does that person have the authority, resources, mechanism, capability, and information required to be responsible?”
+| Layer | Purpose | 内容 |
+|---|---|---|
+| `SKILL.md` | Agent protocol | Agent 核心执行协议 |
+| `engines/` | Reasoning engines | 诊断、决策、组织、人才、机制、AI 重构 |
+| `references/` | Domain knowledge | 企业经营知识模块 |
+| `templates/` | Structured outputs | 标准化工作模板 |
+| `examples/` | Real scenarios | 真实经营场景 |
+| `evals/` | Behavioral evaluation | Agent 行为评测 |
 
-本 Skill 进一步追问：“这个人是否拥有承担责任所必需的权力、资源、机制、能力和信息？”
+## Non-negotiable rules / 不可违背原则
 
-## Status / 当前状态
+1. **No evidence → no strong claim. / 没有证据，不做强结论。**
+2. **Symptom ≠ root cause. / 症状不等于根因。**
+3. **Business problem ≠ people problem. / 业务问题不等于人的问题。**
+4. **Responsibility without authority is invalid design. / 有责任无权力，是无效设计。**
+5. **Accountability without resources is invalid design. / 有问责无资源，是无效设计。**
+6. **High performance ≠ high potential. / 高绩效不等于高潜力。**
+7. **Do not manufacture missing facts. / 不得编造缺失事实。**
 
-This repository is an evolving Agent Skill. The priority is to turn management methodology into **testable, evidence-aware, executable behavior**.
+## Install / 安装
 
-这是一个持续演进的 Agent Skill。当前重点是把管理方法论转化为**可测试、重证据、可执行的 Agent 行为**。
+The canonical Skill lives at:
+
+```text
+skills/enterprise-operating-system/SKILL.md
+```
+
+For Agent runtimes that support the Skills convention, install/copy that directory as a Skill.  
+对于支持 Skills 规范的 Agent Runtime，将该目录作为 Skill 安装或复制即可。
+
+## Repository / 仓库
+
+- [`SKILL.md`](./skills/enterprise-operating-system/SKILL.md) — canonical Agent protocol / 核心 Agent 协议
+- [`engines/`](./skills/enterprise-operating-system/engines/) — reasoning engines / 推理引擎
+- [`references/`](./skills/enterprise-operating-system/references/) — domain references / 知识模块
+- [`templates/`](./skills/enterprise-operating-system/templates/) — reusable templates / 工作模板
+- [`examples/`](./skills/enterprise-operating-system/examples/) — examples / 案例
+- [`evals/`](./evals/) — behavioral evaluation / 行为评测
+
+## Project direction / 项目方向
+
+The goal is not to create the “best management document”. The goal is to build a **portable, testable and continuously improving enterprise reasoning skill for AI agents**.
+
+目标不是写出“最好看的企业管理文档”，而是建立一个**可迁移、可测试、可持续迭代的企业经营 Agent Skill**。
+
+## Contributing / 参与贡献
+
+Useful contributions include:
+
+- new real-world cases / 新的真实案例
+- adversarial evaluation prompts / 对抗性测试
+- better diagnostic logic / 更好的诊断逻辑
+- evidence standards / 证据标准
+- AI-native organization patterns / AI 原生组织模式
+- integrations with Agent runtimes / Agent Runtime 集成
+
+## License
+
+See [`LICENSE`](./LICENSE).
