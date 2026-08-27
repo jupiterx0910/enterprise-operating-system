@@ -1,51 +1,63 @@
-# Diagnosis Engine
+# Diagnosis Engine / 诊断引擎
 
-## Purpose
+## Purpose / 目的
 
-将“结果不好”转化为可验证的根因假设，而不是直接给出人事建议。
+Turn a business-result gap into testable root-cause hypotheses rather than jumping directly to people recommendations.
 
-## Root-Cause Tree
+把经营结果偏差转化为可验证的根因假设，而不是直接跳到“换人/考核”。
+
+## Root-Cause Tree / 根因树
 
 ```text
-Business Result Gap
-├── Strategy
-├── Organization
-├── Mechanism
-├── People
-└── Execution
+Business Result Gap / 经营结果偏差
+├── Strategy / 战略
+├── Organization / 组织
+├── Mechanism / 机制
+├── People / 人才
+└── Execution / 执行
 ```
 
-## Protocol
+## Protocol / 协议
 
-### Step 1 — Define the gap
+### Step 1 — Define the gap / 定义偏差
 
 `Target - Actual = Gap`
 
-明确指标、周期、范围和基准。
+Specify metric, period, scope, baseline, and materiality.
 
-### Step 2 — Gather evidence
+明确指标、周期、范围、基准与偏差的重要程度。
 
-优先使用：经营数据、流程数据、组织数据、访谈、客户反馈、项目记录。
+### Step 2 — Gather evidence / 收集证据
 
-### Step 3 — Generate hypotheses
+Prefer operating data, process data, organization data, interviews, customer feedback, and project records.
 
-每个维度至少形成一个可证伪假设，除非有证据证明该维度明显无关。
+优先使用经营数据、流程数据、组织数据、访谈、客户反馈与项目记录。
 
-### Step 4 — Rank hypotheses
+### Step 3 — Generate hypotheses / 生成假设
 
-按以下因素排序：
+For each relevant dimension, create a falsifiable hypothesis.
+
+对每个相关维度形成可证伪假设。
+
+### Step 4 — Rank hypotheses / 排序
 
 `Impact × Evidence × Plausibility × Testability`
 
-### Step 5 — Test alternatives
+按影响、证据、合理性、可测试性排序。
 
-主动寻找能解释同一现象的竞争性假设。
+### Step 5 — Test alternatives / 测试替代解释
 
-### Step 6 — Select root cause(s)
+Actively seek competing explanations for the same symptom.
 
-根因不是“最容易讲的故事”，而是当前证据下最能解释关键结果、并能通过干预改变结果的因素。
+主动寻找能够解释同一症状的竞争性假设。
 
-## Required Output
+### Step 6 — Select root cause(s) / 选择根因
+
+A root cause is not the easiest story. It is the factor that best explains the result under current evidence and can plausibly be changed by intervention.
+
+根因不是“最容易讲的故事”，而是在当前证据下最能解释结果、且可以通过干预改变结果的因素。
+
+## Required Output / 必须输出
 
 ```yaml
 problem: ""
@@ -64,10 +76,8 @@ interventions: []
 unknowns: []
 ```
 
-## Anti-Pattern
+## Anti-Pattern / 反模式
 
-不要出现：
+Do not say: “Employees lack execution capability, so strengthen performance management” unless evidence has materially ruled out target design, resources, process, decision rights, incentives, and management mechanisms.
 
-> “员工执行力不够，所以应该加强绩效考核。”
-
-除非已有证据排除了目标设计、资源、流程、决策权、激励和管理机制等重要替代解释。
+不要轻易说：“员工执行力不够，所以加强绩效考核。”除非证据已经基本排除了目标设计、资源、流程、决策权、激励和管理机制等重要替代解释。
