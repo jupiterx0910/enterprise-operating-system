@@ -89,7 +89,7 @@ The unit of redesign is **work**, not simply headcount.
 | Layer | Purpose | 内容 |
 |---|---|---|
 | `SKILL.md` | Agent protocol | Agent 核心执行协议 |
-| `engines/` | Reasoning engines | 诊断、决策、组织、人才、机制、AI 重构 |
+| `engines/` | Reasoning engines | 诊断、决策、组织、人才、机制、绩效、复盘、AI 重构 |
 | `references/` | Domain knowledge | 企业经营知识模块 |
 | `templates/` | Structured outputs | 标准化工作模板 |
 | `examples/` | Real scenarios | 真实经营场景 |
@@ -103,7 +103,9 @@ The unit of redesign is **work**, not simply headcount.
 4. **Responsibility without authority is invalid design. / 有责任无权力，是无效设计。**
 5. **Accountability without resources is invalid design. / 有问责无资源，是无效设计。**
 6. **High performance ≠ high potential. / 高绩效不等于高潜力。**
-7. **Do not manufacture missing facts. / 不得编造缺失事实。**
+7. **Headcount reduction is an intervention, not a diagnosis. / 裁员是干预手段，不是诊断结论。**
+8. **Redesign work before redesigning headcount. / 先重构工作，再重构人头。**
+9. **Do not manufacture missing facts. / 不得编造缺失事实。**
 
 ## Install / 安装
 
@@ -113,17 +115,20 @@ The canonical Skill lives at:
 skills/enterprise-operating-system/SKILL.md
 ```
 
-For Agent runtimes that support the Skills convention, install/copy that directory as a Skill.  
-对于支持 Skills 规范的 Agent Runtime，将该目录作为 Skill 安装或复制即可。
+For Agent runtimes that support the Skills convention, install/copy the entire `skills/enterprise-operating-system/` directory as a Skill.
 
-## Repository / 仓库
+对于支持 Skills 规范的 Agent Runtime，将整个 `skills/enterprise-operating-system/` 目录作为 Skill 安装或复制即可。
+
+## Repository map / 仓库结构
 
 - [`SKILL.md`](./skills/enterprise-operating-system/SKILL.md) — canonical Agent protocol / 核心 Agent 协议
 - [`engines/`](./skills/enterprise-operating-system/engines/) — reasoning engines / 推理引擎
 - [`references/`](./skills/enterprise-operating-system/references/) — domain references / 知识模块
 - [`templates/`](./skills/enterprise-operating-system/templates/) — reusable templates / 工作模板
-- [`examples/`](./skills/enterprise-operating-system/examples/) — examples / 案例
+- [`examples/`](./examples/) — flagship cases / 旗舰案例
 - [`evals/`](./evals/) — behavioral evaluation / 行为评测
+- [`docs/architecture.md`](./docs/architecture.md) — architecture / 架构
+- [`docs/design-philosophy.md`](./docs/design-philosophy.md) — design principles / 设计哲学
 
 ## Project direction / 项目方向
 
