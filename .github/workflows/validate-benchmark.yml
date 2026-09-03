@@ -1,0 +1,14 @@
+name: Validate Benchmark
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  benchmark-structure:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Validate benchmark structure
+        run: bash scripts/validate-benchmark.sh
