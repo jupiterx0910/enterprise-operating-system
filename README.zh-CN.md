@@ -9,21 +9,39 @@
 
 This is not a traditional HR methodology. It is an operating protocol that enables an Agent to participate in the enterprise operating loop.
 
-## 核心公式 / Core Model
+## 核心闭环 / Core Loop
+
+`DISCOVER → DIAGNOSE → DESIGN → DECIDE → EXECUTE → MEASURE → REVIEW → LEARN`
+
+**证据 → 诊断 → 决策 → 行动 → 衡量 → 复盘 → 学习**
+
+## 核心模型 / Core Model
 
 > **经营结果 = 战略 × 组织 × 人才 × 机制 × 执行**
 >
 > **Business outcome = Strategy × Organization × People × Mechanism × Execution**
 
-## Agent 主循环 / Agent Operating Loop
+乘号意味着：关键维度中的严重失效可能主导最终结果；不要默认五个维度等权。
+
+The multiplication sign is intentional: a severe failure in one critical domain can dominate the outcome.
+
+## AI 原生组织 / AI-Native Organization
+
+不要从“AI 会替代哪些岗位”开始。
+
+Do not start with “Which jobs will AI replace?”.
 
 ```text
-DISCOVER → DIAGNOSE → DESIGN → DECIDE
-发现 → 诊断 → 设计 → 决策
-        ↓
-LEARN ← REVIEW ← MEASURE ← EXECUTE
-学习 ← 复盘 ← 衡量 ← 执行
+ROLE → RESPONSIBILITIES → WORKFLOWS → TASKS → DECISIONS → ACCOUNTABILITY
+                                      ↓
+                         HUMAN | AI | AGENT
+                                      ↓
+                    NEW WORKFLOW / ROLE / METRICS
 ```
+
+重构的基本单位是 **work**，不是简单的人头。
+
+The unit of redesign is **work**, not simply headcount.
 
 ## 核心原则 / Core Principles
 
@@ -32,39 +50,40 @@ LEARN ← REVIEW ← MEASURE ← EXECUTE
 - 业务问题不等于人的问题。 / Business problem ≠ people problem.
 - 先查战略、组织、机制，再查个人。 / Diagnose strategy, organization, and mechanisms before blaming individuals.
 - 责任必须与权力和资源匹配。 / Responsibility must match authority and resources.
-- AI 转型首先重构工作流，其次才讨论岗位变化。 / AI transformation starts with work and workflow redesign, not job-cutting.
+- 高绩效不等于高潜力。 / High performance ≠ high potential.
+- 裁员是干预手段，不是诊断结论。 / Headcount reduction is an intervention, not a diagnosis.
 
 ## 目录 / Repository
 
-- [`SKILL.md`](./SKILL.md) — Agent 主协议 / Agent execution protocol
-- [`docs/`](./docs/) — 方法论与架构 / operating model and architecture
-- [`references/`](./references/) — 企业经营知识模块 / domain knowledge
-- [`engines/`](./engines/) — Agent 诊断与决策引擎 / diagnosis and decision engines
-- [`templates/`](./templates/) — 可直接使用的工作模板 / reusable templates
-- [`examples/`](./examples/) — 典型案例 / examples
-- [`tests/`](./tests/) — Skill 行为测试 / behavioral tests
+- [`SKILL.md`](./skills/enterprise-operating-system/SKILL.md) — Agent 主协议 / Agent protocol
+- [`engines/`](./skills/enterprise-operating-system/engines/) — 诊断、组织、人才、机制、绩效、复盘与 AI 重构引擎
+- [`references/`](./skills/enterprise-operating-system/references/) — 企业经营知识模块 / domain references
+- [`templates/`](./skills/enterprise-operating-system/templates/) — 可复用工作模板 / reusable templates
+- [`examples/`](./examples/) — 10 个旗舰案例 / 10 flagship cases
+- [`evals/`](./evals/) — 对抗性行为评测 / behavioral evaluation
+- [`docs/architecture.md`](./docs/architecture.md) — 架构 / architecture
+- [`docs/design-philosophy.md`](./docs/design-philosophy.md) — 设计哲学 / design philosophy
 
-## 适用场景 / Use Cases
+## 安装 / Install
 
-- 战略执行与经营目标诊断 / Strategy execution and missed-target diagnosis
-- 组织设计与重构 / Organization design and restructuring
-- 战略 → 组织 → 岗位 → 人才映射 / Strategy → organization → roles → talent mapping
-- DRI / RACI / 决策权设计 / DRI, RACI, and decision-right design
-- 人才盘点、继任、绩效与激励 / Talent review, succession, performance, and incentives
-- MBR / QBR / Business reviews
-- Human + AI + Agent 工作重构 / Human + AI + Agent work redesign
+The canonical Skill is:
 
-## Design Philosophy / 设计哲学
+```text
+skills/enterprise-operating-system/
+```
+
+For runtimes supporting the Agent Skills convention, install/copy this directory as a Skill.
+
+对于支持 Agent Skills 规范的 Runtime，将该目录作为 Skill 安装或复制即可。
+
+## 设计目标 / Design Goal
 
 核心不是让 Agent “懂管理”，而是让 Agent 按照：
 
-The goal is not merely to make an Agent “know management”, but to make it operate through:
+**事实 → 诊断 → 决策 → 行动 → 衡量 → 复盘 → 学习**
 
-**事实 → 诊断 → 决策 → 行动 → 衡量 → 复盘 → 学习**  
-**Evidence → Diagnosis → Decision → Action → Measurement → Review → Learning**
+持续运行企业经营闭环。
 
-持续运行企业管理闭环。
+The goal is not merely management knowledge. It is a **portable, testable and continuously improving enterprise reasoning skill for AI agents**.
 
-Keep all substantive documentation in Markdown (`.md`) so humans and Agents can read, diff, version, and reuse it directly.
-
-所有核心文档均保持 Markdown（`.md`）格式，便于人类和 Agent 阅读、Diff、版本管理与复用。
+> 本项目的 star 数量不代表方法论有效性；真正的质量来自可复用性、行为评测、真实案例和持续迭代。
