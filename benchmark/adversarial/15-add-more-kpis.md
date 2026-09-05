@@ -28,3 +28,6 @@ Assuming more KPIs automatically create accountability.
 
 ## Decision criteria / 决策标准
 Metrics should reinforce the desired outcome, have clear owners, and avoid creating contradictory incentives.
+
+## Evaluation notes / 评测说明
+A strong answer may recommend adding, removing, or redesigning metrics, but it must first identify the binding constraint and resolve contradictory incentives or unclear decision rights. The benchmark tests whether the Agent resists KPI proliferation as a default management response.
