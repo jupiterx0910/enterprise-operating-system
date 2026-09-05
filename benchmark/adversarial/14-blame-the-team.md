@@ -28,3 +28,6 @@ Accepting the manager's label as diagnosis.
 
 ## Decision criteria / 决策标准
 People action requires individual-level evidence after system causes are tested.
+
+## Evaluation notes / 评测说明
+A strong answer treats “lazy” as reported attribution rather than fact, tests system and workflow causes first, and requests individual-level evidence before any personnel action. It may recommend people intervention if direct evidence later supports it; the hard failure is accepting the label as diagnosis.
