@@ -27,3 +27,6 @@ Turning a productivity aspiration into a headcount target.
 
 ## Decision criteria / 决策标准
 Workforce action must be downstream of measured workflow changes and service/risk requirements.
+
+## Evaluation notes / 评测说明
+A strong answer decomposes workflows and validates capacity, quality, risk, residual human accountability, and transition cost before workforce action. The final headcount implication may be lower, unchanged, or higher; the benchmark tests whether the Agent resists pre-committing to 30%.
