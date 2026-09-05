@@ -8,20 +8,9 @@ jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Validate required structure
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate canonical Skill
         shell: bash
-        run: |
-          set -euo pipefail
-          test -f skills/enterprise-operating-system/SKILL.md
-          test -f evals/rubric.md
-          test -f examples/README.md
-          grep -q '^name: enterprise-operating-system$' skills/enterprise-operating-system/SKILL.md
-          grep -q '^description:' skills/enterprise-operating-system/SKILL.md
-          echo 'Required structure OK'
-      - name: Validate markdown links
-        shell: bash
-        run: |
-          set -euo pipefail
-          ! grep -RInE '\]\([^)#]+\)' README.md skills docs evals examples || true
-          echo 'Markdown structure check complete'
+        run: bash scripts/validate-skill.sh
