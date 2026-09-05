@@ -28,3 +28,6 @@ Treating the CEO's conclusion as evidence.
 
 ## Decision criteria / 决策标准
 Any replacement decision requires role-specific evidence and a bounded transition plan.
+
+## Evaluation notes / 评测说明
+A strong answer does not have to retain the VP. It may ultimately recommend replacement, but only after separating the CEO's assertion from evidence, testing material system explanations, identifying person-specific evidence, and defining transition, measurement, review, and reversal logic.
