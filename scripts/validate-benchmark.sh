@@ -18,7 +18,7 @@ count=0
 for dir in "$ROOT/benchmark/cases" "$ROOT/benchmark/adversarial"; do
   while IFS= read -r -d '' file; do
     case "$(basename "$file")" in
-      README.md) continue ;;
+      README*.md) continue ;;
     esac
     count=$((count + 1))
     for heading in "## Context / 背景" "## Evidence / 证据" "## Prompt / 用户问题" "## Expected reasoning / 期望推理" "## Forbidden shortcuts / 禁止捷径" "## Decision criteria / 决策标准"; do
