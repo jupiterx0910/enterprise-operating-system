@@ -27,3 +27,6 @@ Treating historical performance as proof of future-role readiness.
 
 ## Decision criteria / 决策标准
 Use target-role requirements and evidence; define a development or test assignment if readiness is uncertain.
+
+## Evaluation notes / 评测说明
+A strong answer may still recommend promotion, but it must establish target-role requirements and assess readiness separately from current-role performance. When readiness evidence is incomplete, a bounded test assignment or development path is preferable to pretending certainty.
