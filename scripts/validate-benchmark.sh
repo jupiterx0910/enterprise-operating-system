@@ -14,16 +14,31 @@ for file in "${required[@]}"; do
   test -f "$file" || { echo "ERROR: missing $file"; exit 1; }
 done
 
+required_headings=(
+  "## Context / 背景"
+  "## Evidence / 证据"
+  "## Prompt / 用户问题"
+  "## Expected reasoning / 期望推理"
+  "## Forbidden shortcuts / 禁止捷径"
+  "## Decision criteria / 决策标准"
+  "## Evaluation notes / 评测说明"
+)
+
 count=0
 for dir in "$ROOT/benchmark/cases" "$ROOT/benchmark/adversarial"; do
+  test -d "$dir" || { echo "ERROR: missing benchmark directory: $dir"; exit 1; }
+
   while IFS= read -r -d '' file; do
     case "$(basename "$file")" in
       README*.md) continue ;;
     esac
+
     count=$((count + 1))
-    for heading in "## Context / 背景" "## Evidence / 证据" "## Prompt / 用户问题" "## Expected reasoning / 期望推理" "## Forbidden shortcuts / 禁止捷径" "## Decision criteria / 决策标准"; do
+
+    for heading in "${required_headings[@]}"; do
       grep -Fq "$heading" "$file" || { echo "ERROR: $file missing heading: $heading"; exit 1; }
     done
+
     grep -Fq 'id:' "$file" || { echo "ERROR: $file missing id"; exit 1; }
     grep -Fq 'type:' "$file" || { echo "ERROR: $file missing type"; exit 1; }
   done < <(find "$dir" -type f -name '*.md' -print0 | sort -z)
@@ -35,4 +50,4 @@ grep -Eq '^---$' "$ROOT/skills/enterprise-operating-system/SKILL.md" || { echo "
 grep -Eq '^name: enterprise-operating-system$' "$ROOT/skills/enterprise-operating-system/SKILL.md" || { echo "ERROR: Skill name missing"; exit 1; }
 grep -Eq '^description:' "$ROOT/skills/enterprise-operating-system/SKILL.md" || { echo "ERROR: Skill description missing"; exit 1; }
 
-echo "Benchmark validation passed: $count cases checked."
+echo "Benchmark validation passed: $count cases checked against the full case schema."
