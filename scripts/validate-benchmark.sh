@@ -15,14 +15,19 @@ for file in "${required[@]}"; do
 done
 
 count=0
-while IFS= read -r -d '' file; do
-  count=$((count + 1))
-  for heading in "## Context / 背景" "## Evidence / 证据" "## Prompt / 用户问题" "## Expected reasoning / 期望推理" "## Forbidden shortcuts / 禁止捷径" "## Decision criteria / 决策标准"; do
-    grep -Fq "$heading" "$file" || { echo "ERROR: $file missing heading: $heading"; exit 1; }
-  done
-  grep -Fq 'id:' "$file" || { echo "ERROR: $file missing id"; exit 1; }
-  grep -Fq 'type:' "$file" || { echo "ERROR: $file missing type"; exit 1; }
-done < <(find "$ROOT/benchmark/cases" "$ROOT/benchmark/adversarial" -type f -name '*.md' -print0 | sort -z)
+for dir in "$ROOT/benchmark/cases" "$ROOT/benchmark/adversarial"; do
+  while IFS= read -r -d '' file; do
+    case "$(basename "$file")" in
+      README.md) continue ;;
+    esac
+    count=$((count + 1))
+    for heading in "## Context / 背景" "## Evidence / 证据" "## Prompt / 用户问题" "## Expected reasoning / 期望推理" "## Forbidden shortcuts / 禁止捷径" "## Decision criteria / 决策标准"; do
+      grep -Fq "$heading" "$file" || { echo "ERROR: $file missing heading: $heading"; exit 1; }
+    done
+    grep -Fq 'id:' "$file" || { echo "ERROR: $file missing id"; exit 1; }
+    grep -Fq 'type:' "$file" || { echo "ERROR: $file missing type"; exit 1; }
+  done < <(find "$dir" -type f -name '*.md' -print0 | sort -z)
+done
 
 test "$count" -ge 15 || { echo "ERROR: expected at least 15 benchmark cases, found $count"; exit 1; }
 
