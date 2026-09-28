@@ -1,5 +1,29 @@
 # Changelog
 
+## 0.4.0 — 2026-09-28
+
+### Added
+
+- Five public, source-grounded real-world enterprise cases: Wells Fargo, Target Canada, Uber, Equifax, and Boeing 737 MAX
+- Reproducible `NATIVE` vs `EOS_ENABLED` paired run contract with immutable run metadata
+- Raw-output and per-case scorecard submission structure
+- Skill-Lift leaderboard methodology with Candidate and Verified tiers
+- Primary effectiveness metrics: `Skill Lift` and `Hard-Fail Reduction`
+- Structural v0.4 CI plus a negative anti-fabrication test that rejects numeric leaderboard rows without auditable run artifacts
+
+### Changed
+
+- Benchmark documentation now distinguishes raw model capability from EOS incremental value
+- Public documentation now describes 20 benchmark cases: 10 flagship, 5 adversarial, and 5 real-world
+- Evaluation guidance now requires preserved runtime configuration, raw outputs, and independent human review for Verified entries
+
+### Integrity
+
+- No Verified model submissions exist at release time
+- Structural CI is not presented as semantic model performance
+- Public historical cases are explicitly labeled as non-contamination-resistant
+
+
 ## 0.3.0 — 2026-09-05
 
 ### Added
