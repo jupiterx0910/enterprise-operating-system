@@ -6,7 +6,7 @@
 [![Agent Skill](https://img.shields.io/badge/Agent-Skill-0f172a)](https://github.com/jupiterx0910/enterprise-operating-system/tree/main/skills/enterprise-operating-system)
 [![Bilingual](https://img.shields.io/badge/Language-中文%20%2B%20English-blue)](https://github.com/jupiterx0910/enterprise-operating-system)
 [![Evaluation](https://img.shields.io/badge/Evals-Behavioral%20Tests-purple)](https://github.com/jupiterx0910/enterprise-operating-system/tree/main/evals)
-[![Benchmark](https://img.shields.io/badge/Benchmark-15%20Cases-orange)](https://github.com/jupiterx0910/enterprise-operating-system/tree/main/benchmark)
+[![Benchmark](https://img.shields.io/badge/Benchmark-20%20Cases-orange)](https://github.com/jupiterx0910/enterprise-operating-system/tree/main/benchmark)
 
 ## Why this exists / 为什么做它
 
@@ -227,7 +227,7 @@ This repository does not only describe the methodology. It tests whether an Agen
 
 仓库不只是描述方法论，而是测试 Agent **是否真的遵守这套方法论**。
 
-### 15 benchmark cases
+### 20 benchmark cases
 
 **10 flagship cases** cover sales gaps, margin collapse, executive conflict, organization layering, promotion, product underperformance, AI transformation, founder bottlenecks, incentive distortion and succession risk.
 
@@ -240,6 +240,8 @@ This repository does not only describe the methodology. It tests whether an Agen
 - “Add five more KPIs.”
 
 The Agent should resist the framing when the evidence does not support it.
+
+**5 public real-world cases** add source-grounded enterprise events: Wells Fargo incentive distortion, Target Canada operating-model failure, Uber culture/governance reset, Equifax accountability gaps, and Boeing 737 MAX governance. Each case records public-source provenance and an evidence cutoff; these cases test reasoning quality, not historical trivia.
 
 → **[Explore the Benchmark](./benchmark/README.md)**  
 → **[Read the Evaluation Rubric](./benchmark/rubric.md)**
@@ -254,6 +256,32 @@ Hard failures include fabricated facts, unsupported personnel actions, blanket A
 
 **Important:** benchmark scores are only published after an actual model run. Structural CI validation is not presented as semantic model performance.
 
+### Native vs EOS / 配对 A/B 实验
+
+The primary v0.4 question is not merely “which model scores highest?” It is:
+
+> **Does the same model reason better after the EOS Skill is loaded?**
+
+```text
+SAME MODEL + SAME RUNTIME + SAME CASE SNAPSHOT
+        ├── NATIVE
+        └── EOS_ENABLED
+                 ↓
+      RAW OUTPUTS + SCORECARDS
+                 ↓
+      Skill Lift + Hard-Fail Reduction
+```
+
+- **Skill Lift** = EOS-enabled mean − Native mean.
+- **Hard-Fail Reduction** = Native hard-fail rate − EOS-enabled hard-fail rate.
+- **Candidate**: one complete paired trial per case.
+- **Verified**: at least 3 paired trials per case, preserved raw outputs, published rubric scoring, and independent human review.
+- **Current status:** no Verified submissions are published yet.
+
+→ **[Real-world cases](./benchmark/real-world/README.md)**  
+→ **[Run protocol](./benchmark/runs/README.md)**  
+→ **[Skill-Lift leaderboard](./leaderboard/README.md)**
+
 ---
 
 ## What is inside / 项目内容
@@ -266,7 +294,8 @@ Hard failures include fabricated facts, unsupported personnel actions, blanket A
 | Templates | `skills/enterprise-operating-system/templates/` | Intake, diagnosis and 90-day execution artifacts / 标准化输出模板 |
 | Examples | `examples/` | Operating scenarios / 经营场景 |
 | Evals | `evals/` | Behavioral evaluation / Agent 行为评测 |
-| Benchmark | `benchmark/` | Model-agnostic reasoning benchmark / 模型无关推理测试 |
+| Benchmark | `benchmark/` | Synthetic, adversarial and public real-world cases + paired run protocol / 合成、对抗、真实案例与配对运行协议 |
+| Leaderboard | `leaderboard/` | Auditable Skill Lift and hard-fail reduction results / 可审计的 Skill 增益榜 |
 | Docs | `docs/` | Architecture, methodology, evaluation / 架构、方法与评测说明 |
 | CI | `scripts/` + `.github/workflows/` | Structural regression protection / 结构防回归 |
 
