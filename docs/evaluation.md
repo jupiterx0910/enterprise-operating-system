@@ -12,6 +12,9 @@ The repository benchmark contains flagship and adversarial cases:
 
 - `../benchmark/cases/` — representative operating problems / 代表性经营问题
 - `../benchmark/adversarial/` — reasoning traps / 推理陷阱
+- `../benchmark/real-world/` — public source-grounded enterprise cases / 公共真实企业案例
+- `../benchmark/runs/` — reproducible paired run records / 可复现配对运行记录
+- `../leaderboard/` — Skill Lift leaderboard / Skill 增益榜
 - `../benchmark/rubric.md` — 12-point rubric / 12 分评分标准
 - `../benchmark/schema.md` — case contract / 案例规范
 
@@ -35,3 +38,37 @@ Structural CI validates case completeness; it does not replace semantic evaluati
 ## Regression principle / 回归原则
 
 When the Skill changes, previously passing cases should be rerun. A new version must not improve one scenario by silently degrading evidence discipline or system diagnosis elsewhere.
+
+
+## v0.4 effectiveness evaluation / v0.4 增量价值评测
+
+EOS effectiveness is evaluated with paired runs:
+
+- `NATIVE`: target model without EOS.
+- `EOS_ENABLED`: same model/runtime/case snapshot with the canonical EOS Skill loaded.
+
+The principal project metric is **Skill Lift**, not raw model score:
+
+`Skill Lift = EOS_ENABLED mean − NATIVE mean`
+
+We also track **Hard-Fail Reduction**, because a useful enterprise operating Skill should reduce unsupported personnel actions, blanket AI layoffs, responsibility-without-authority designs, fabrication, and other benchmark hard failures.
+
+### Candidate vs Verified
+
+**Candidate**
+- all required cases completed;
+- one trial per case per condition;
+- manifests, raw outputs, and scorecards preserved.
+
+**Verified**
+- same model/version, tools, reasoning effort, runtime policy and case snapshot;
+- at least 3 trials per case per condition;
+- complete raw outputs and scorecards;
+- hard-fail review;
+- at least one independent human review.
+
+LLM-assisted grading can help triage, but it cannot be the sole final evaluator for a Verified result.
+
+## Provenance and contamination / 来源与污染
+
+Public real-world cases record source provenance and evidence cutoffs. Because historical public cases may appear in model training data, they are process tests rather than contamination-resistant forecasting tests. Hidden/holdout cases are a future evaluation layer.
