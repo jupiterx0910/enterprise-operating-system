@@ -1,0 +1,16 @@
+name: Validate v0.4 Empirical Benchmark
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  empirical-benchmark-structure:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Validate v0.4 structure
+        run: bash scripts/validate-v04.sh
+      - name: Test anti-fabrication guard
+        run: bash scripts/test-validate-v04.sh
