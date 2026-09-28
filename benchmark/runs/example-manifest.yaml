@@ -1,0 +1,24 @@
+# Example only. This is not a benchmark result.
+run_id: "20260906-example-model-native-r1"
+benchmark_version: "v0.4"
+skill_commit: "none"
+case_snapshot: "EXAMPLE_SHA"
+condition: "NATIVE"
+model:
+  provider: "example-provider"
+  model_id: "example-model"
+  model_version: "example-version"
+  reasoning_effort: "example"
+runtime:
+  harness: "example-harness"
+  tools: []
+  temperature: null
+  seed: null
+  system_prompt_hash: "EXAMPLE_HASH"
+  skill_loaded: false
+trial: 1
+started_at: "2026-09-06T00:00:00Z"
+completed_at: "2026-09-06T00:00:00Z"
+evaluator:
+  method: "human"
+  names_or_ids: ["example-reviewer"]
