@@ -185,6 +185,8 @@ Human | AI | Agent | Hybrid
 
 - **10 个旗舰经营案例**；
 - **5 个对抗性案例**；
+- **5 个公共真实企业案例**：Wells Fargo、Target Canada、Uber、Equifax、Boeing 737 MAX；
+- **NATIVE vs EOS_ENABLED 配对 A/B 运行协议**；
 - **6 个评分维度 × 0–2 分 = 12 分**；
 - hard-fail 规则：编造事实、无证据换人、AI 一刀切裁员、有问责无权限/资源、忽略关键未知项却给高置信结论等。
 
@@ -195,6 +197,31 @@ Human | AI | Agent | Hybrid
 - [`docs/evaluation.md`](./docs/evaluation.md)
 
 **结构 CI 通过不等于模型推理成绩。只有真实运行模型后，才可以发布 Benchmark 分数。**
+
+### v0.4：不只测“模型强不强”，而是测 EOS 有没有增量价值
+
+核心实验固定同一个模型、同一推理档位、同一工具权限、同一案例快照，只改变是否加载 EOS：
+
+```text
+同一模型
+ ├─ NATIVE
+ └─ EOS_ENABLED
+       ↓
+原始输出 + 逐题评分
+       ↓
+Skill Lift + Hard-Fail Reduction
+```
+
+- **Skill Lift** = EOS 平均分 − Native 平均分；
+- **Hard-Fail Reduction** = Native 硬失败率 − EOS 硬失败率；
+- **Candidate**：每个 case、每种条件至少完整运行 1 次；
+- **Verified**：每个 case、每种条件至少 3 次，保留原始输出，按公开 rubric 评分，并至少有一次独立人工复核；
+- **当前状态：尚无 Verified 实跑结果**，因此仓库不发布任何伪造的模型分数。
+
+查看：
+- [真实公共案例](./benchmark/real-world/README.md)
+- [运行协议](./benchmark/runs/README.md)
+- [Skill-Lift 榜单](./leaderboard/README.md)
 
 ---
 
@@ -259,7 +286,8 @@ EOS 使用渐进式读取：入口 Skill 先路由，再只加载当前问题真
 - [`engines/`](./skills/enterprise-operating-system/engines/) — 推理引擎
 - [`references/`](./skills/enterprise-operating-system/references/) — 深层经营知识
 - [`templates/`](./skills/enterprise-operating-system/templates/) — 标准化工作模板
-- [`benchmark/`](./benchmark/) — 模型无关经营推理 Benchmark
+- [`benchmark/`](./benchmark/) — 合成、对抗、真实案例与配对运行协议
+- [`leaderboard/`](./leaderboard/) — 可审计的 Skill Lift / Hard-Fail Reduction 榜单
 - [`evals/`](./evals/) — 行为评测
 - [`examples/`](./examples/) — 经营场景
 - [`docs/architecture.md`](./docs/architecture.md) — 系统架构
