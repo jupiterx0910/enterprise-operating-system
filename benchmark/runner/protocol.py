@@ -20,6 +20,7 @@ class RuntimeIdentity:
     accelerate: str
     hardware: str
     cuda: str
+    thinking_mode: str = "disabled"
 
 
 @dataclass(frozen=True)
@@ -56,6 +57,7 @@ class ExperimentManifest:
     conditions: tuple[str, ...]
     trials_per_case: int
     verified: bool
+    skill_bundle_token_count: int | None = None
 
 
 def _diff(label: str, left: object, right: object, out: list[str]) -> None:
@@ -97,7 +99,7 @@ def validate_pair(native: RunManifest, eos: RunManifest) -> list[str]:
     for field in ("do_sample", "temperature", "top_p", "seed", "max_new_tokens"):
         _diff(f"generation.{field}", getattr(native.generation, field), getattr(eos.generation, field), violations)
 
-    for field in ("python", "torch", "transformers", "accelerate", "hardware", "cuda"):
+    for field in ("python", "torch", "transformers", "accelerate", "hardware", "cuda", "thinking_mode"):
         _diff(f"runtime.{field}", getattr(native.runtime, field), getattr(eos.runtime, field), violations)
 
     return violations
