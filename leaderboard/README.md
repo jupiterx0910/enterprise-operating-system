@@ -18,6 +18,17 @@ Verified entries are ranked by:
 
 A raw model score mixes model capability, reasoning mode, system prompt, tools, and runtime. A paired experiment holds those variables as constant as possible and isolates the contribution of the EOS Skill.
 
+## Candidate / Pilot leaderboard
+
+No Candidate/Pilot submissions are published yet.
+
+A numeric Candidate row requires:
+- one complete paired NATIVE/EOS_ENABLED experiment;
+- all 10 raw outputs for the v0.5 pilot;
+- 10 rubric scorecards;
+- machine-validated configuration equality;
+- aggregate metrics recomputed from scorecards.
+
 ## Verified leaderboard
 
 No verified submissions yet. Numeric scores must not be added here without auditable run artifacts under `leaderboard/submissions/` and `benchmark/runs/submissions/`.
