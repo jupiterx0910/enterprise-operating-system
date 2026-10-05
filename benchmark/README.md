@@ -66,3 +66,23 @@ Primary metrics:
 A **Candidate** entry requires one complete paired trial per case. A **Verified** entry requires at least 3 paired trials per case, complete raw outputs and scorecards, and independent human review.
 
 Current public leaderboard status: **No verified submissions yet.**
+
+
+## v0.5 executable pilot runner / v0.5 可执行实验 Runner
+
+The repository now includes an offline-tested paired experiment harness under `benchmark/runner/`.
+
+It provides:
+
+- strict extraction of Context, Evidence and Prompt only;
+- deterministic canonical EOS Skill bundling with SHA-256 provenance;
+- NATIVE/EOS configuration-drift checks;
+- pinned-model Transformers generation;
+- immediate raw-output persistence;
+- artifact completeness validation;
+- scorecard aggregation that recomputes Skill Lift from underlying scores;
+- CI anti-fabrication guards.
+
+The first v0.5 protocol targets `Qwen/Qwen3-8B`, five public real-world cases, one trial per condition, and exactly 10 generations.
+
+**No Candidate score is published until a real complete run exists.**
