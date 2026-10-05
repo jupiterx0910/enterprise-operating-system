@@ -26,6 +26,8 @@ jobs:
         run: |
           bash scripts/validate-v04.sh
           bash scripts/test-validate-v04.sh
+      - name: Run v0.5 publication guard tests
+        run: bash scripts/test-validate-v05.sh
       - name: Assert CI cannot launch paid HF Jobs
         run: |
           if grep -R -E 'hf[[:space:]]+jobs[[:space:]]+(run|uv)|run_job\(|run_uv_job\(' .github/workflows --include='*.yml' --include='*.yaml'; then
