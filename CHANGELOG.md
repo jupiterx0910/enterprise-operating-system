@@ -1,5 +1,27 @@
 # Changelog
 
+## 0.5.0 — 2026-10-05
+
+### Added
+
+- Executable paired experiment runner under `benchmark/runner/`
+- Safe case parser that exposes only Context, Evidence and Prompt to the model
+- Deterministic canonical EOS Skill bundle with SHA-256 provenance
+- Pair-integrity checks for model revision, tokenizer revision, generation configuration, runtime/hardware, baseline prompt and case snapshot
+- Pinned `Qwen/Qwen3-8B` Transformers adapter with Qwen3 thinking disabled for the pilot protocol
+- Immediate per-generation raw-output persistence and recoverable artifact archives
+- Scorecard validator and aggregate recomputation for Skill Lift and Hard-Fail Reduction
+- v0.5 offline GitHub Actions validation and Candidate anti-fabrication checks
+
+### Integrity
+
+- Core CI never launches paid Hugging Face Jobs
+- Pilot scope is fixed at 5 real-world cases × 2 conditions × 1 trial = 10 generations
+- Candidate numbers cannot be published without scored experiment artifacts
+- Verified remains unavailable from the one-trial pilot protocol
+- No unexecuted model score is included in this release
+
+
 ## 0.4.0 — 2026-09-28
 
 ### Added
