@@ -282,6 +282,30 @@ SAME MODEL + SAME RUNTIME + SAME CASE SNAPSHOT
 → **[Run protocol](./benchmark/runs/README.md)**  
 → **[Skill-Lift leaderboard](./leaderboard/README.md)**
 
+### v0.5 executable pilot / 可执行实跑层
+
+v0.5 adds a reproducible runner instead of relying on manual prompting:
+
+```text
+5 PUBLIC REAL-WORLD CASES
+        ↓
+PINNED MODEL REVISION
+        ↓
+NATIVE ───────── EOS_ENABLED
+        ↓              ↓
+      10 RAW OUTPUTS
+             ↓
+       10 SCORECARDS
+             ↓
+Skill Lift + Hard-Fail Reduction
+```
+
+The runner machine-checks case leakage, Skill-bundle provenance, configuration drift, output completeness, score arithmetic, and publication eligibility. Core GitHub Actions never launch paid inference.
+
+**Current integrity status:** no Candidate or Verified numeric result is published until a complete real run is recovered and scored.
+
+→ **[v0.5 runner](./benchmark/runner/README.md)**
+
 ---
 
 ## What is inside / 项目内容
