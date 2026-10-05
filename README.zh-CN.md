@@ -223,6 +223,30 @@ Skill Lift + Hard-Fail Reduction
 - [运行协议](./benchmark/runs/README.md)
 - [Skill-Lift 榜单](./leaderboard/README.md)
 
+### v0.5：从“评测协议”进入“真实可执行 Runner”
+
+v0.5 新增 `benchmark/runner/`，把实验流程程序化：
+
+```text
+5 个公共真实案例
+      ↓
+固定模型 revision
+      ↓
+NATIVE ↔ EOS_ENABLED
+      ↓
+10 份原始输出
+      ↓
+10 份 scorecard
+      ↓
+Skill Lift + Hard-Fail Reduction
+```
+
+系统会机器校验：隐藏评测信息不泄露、EOS Skill bundle 的 hash、两组运行配置是否漂移、10/10 输出是否完整、评分加总是否正确，以及 leaderboard 是否有底层证据。
+
+GitHub Actions 只跑离线测试，**不会自动启动付费模型**。
+
+**当前完整性原则：在真实完整运行和评分完成前，不发布 Candidate 或 Verified 数字。**
+
 ---
 
 ## 唯一 canonical Skill
