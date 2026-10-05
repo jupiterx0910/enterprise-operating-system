@@ -101,6 +101,7 @@ def test_model_and_tokenizer_receive_same_revision(monkeypatch):
     assert FakeTokenizer.calls[-1][1]["revision"] == revision
     assert FakeModel.calls[-1][1]["revision"] == revision
     assert FakeModel.calls[-1][1]["torch_dtype"] == "bf16"
+    assert FakeModel.calls[-1][1]["low_cpu_mem_usage"] is True
 
 
 def test_generation_uses_fixed_nonthinking_greedy_settings(monkeypatch):
