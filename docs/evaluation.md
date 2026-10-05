@@ -72,3 +72,19 @@ LLM-assisted grading can help triage, but it cannot be the sole final evaluator 
 ## Provenance and contamination / 来源与污染
 
 Public real-world cases record source provenance and evidence cutoffs. Because historical public cases may appear in model training data, they are process tests rather than contamination-resistant forecasting tests. Hidden/holdout cases are a future evaluation layer.
+
+
+## v0.5 executable evaluation / v0.5 可执行评测
+
+The v0.5 runner turns the paired protocol into executable software.
+
+Integrity checks cover:
+
+1. **Case leakage** — model generation sees Context, Evidence and Prompt only.
+2. **Treatment provenance** — EOS uses an exact deterministic bundle of the canonical Skill runtime.
+3. **Pair equality** — model/tokenizer revision, generation settings, baseline prompt, case snapshot, runtime versions and hardware must match.
+4. **Completeness** — a five-case pilot requires exactly 5 NATIVE + 5 EOS_ENABLED raw outputs.
+5. **Score integrity** — all aggregate metrics are recomputed from the underlying scorecards; a hand-edited summary is not authoritative.
+6. **Publication integrity** — numeric Candidate results require complete raw artifacts and scorecards.
+
+The pilot remains Candidate-level because it uses one trial per case and LLM-assisted first-pass scoring. Verified status still requires repeated trials and independent human review.
