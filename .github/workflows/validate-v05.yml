@@ -1,0 +1,34 @@
+name: Validate v0.5 Pilot
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  offline-runner:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install offline test dependencies
+        run: pip install -r benchmark/runner/requirements-dev.txt
+      - name: Run v0.5 runner unit tests
+        run: python -m pytest benchmark/runner/tests -q
+      - name: Validate canonical Skill
+        run: bash scripts/validate-skill.sh
+      - name: Validate benchmark
+        run: bash scripts/validate-benchmark.sh
+      - name: Validate v0.4 empirical benchmark
+        run: |
+          bash scripts/validate-v04.sh
+          bash scripts/test-validate-v04.sh
+      - name: Assert CI cannot launch paid HF Jobs
+        run: |
+          if grep -R -E 'hf[[:space:]]+jobs[[:space:]]+(run|uv)|run_job\(|run_uv_job\(' .github/workflows --include='*.yml' --include='*.yaml'; then
+            echo "ERROR: GitHub Actions must not launch paid Hugging Face Jobs"
+            exit 1
+          fi
