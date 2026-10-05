@@ -35,6 +35,7 @@ class TransformersGenerator:
             revision=self.revision,
             torch_dtype=self._torch.bfloat16,
             device_map="auto",
+            low_cpu_mem_usage=True,
         )
         self.model.eval()
 
